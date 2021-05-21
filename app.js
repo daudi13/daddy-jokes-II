@@ -1,16 +1,16 @@
-const jokeElement = document.querySelector('.jokes');
+const jokeEl = document.querySelector('.jokes');
 const buttonJokes = document.getElementById('btn');
 
-buttonJokes.addEventListener('click', displayJokes)
+buttonJokes.addEventListener('click', displayJoke);
 
-async function displayJokes() {
+async function displayJoke() {
     const config = {
         headers: {
-            "Accept":"application/json"
+            "Accept": "application/json"
         }
     }
 
-    const response = await fetch('https://icanhazdadjoke.com/', config);
-    const data = await response.json();
-    jokeElement.innerHTML = data.joke
+    const res = await fetch('https://icanhazdadjoke.com/', config);
+    const meta = await res.json();
+    jokeEl.innerHTML = meta.joke
 }
